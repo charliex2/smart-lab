@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class LineController {
+public class DepartmentController {
+
 
     public DepartmentService lineService;
 
-    public LineController(DepartmentService lineService) {
+    public DepartmentController(DepartmentService lineService) {
         this.lineService = lineService;
     }
 

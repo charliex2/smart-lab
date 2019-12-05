@@ -4,11 +4,18 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: homestead
     password: secret
-    schema: classpath:database/schema.sql
-    data: classpath:database/data.sql
+    schema:
+      - classpath:database/schema.sql
+      - classpath:database/schema_oauth.sql
+      - classpath:database/schema_acl.sql
+    data:
+      - classpath:database/data.sql
+      - classpath:database/data_oauth.sql
+      - classpath:database/data_acl.sql
     initialization-mode: always
+    continue-on-error: true
 
 server:
-  port: 8001
+  port: 8081
 mybatis:
   type-handlers-package: cn.chingshen.smartlab.typehandlers

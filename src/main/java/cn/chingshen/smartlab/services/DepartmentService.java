@@ -1,6 +1,6 @@
 package cn.chingshen.smartlab.services;
 
-import cn.chingshen.smartlab.mappers.LineMapper;
+import cn.chingshen.smartlab.mappers.DepartmentMapper;
 import cn.chingshen.smartlab.models.test.Department;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.stereotype.Service;
@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class DepartmentService {
 
-    public LineMapper lineMapper;
+    public DepartmentMapper lineMapper;
 
-    public DepartmentService(LineMapper lineMapper) {
+    public DepartmentService(DepartmentMapper lineMapper) {
         this.lineMapper = lineMapper;
     }
 

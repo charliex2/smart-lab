@@ -1,5 +1,4 @@
-#############################################
-
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `depositories`;
 CREATE TABLE `depositories`
 (
@@ -13,6 +12,7 @@ CREATE TABLE `depositories`
   DEFAULT CHARSET = utf8mb4;
 
 # TransferSheet
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `transfer_sheets`;
 CREATE TABLE `transfer_sheets`
 (
@@ -27,6 +27,7 @@ CREATE TABLE `transfer_sheets`
   DEFAULT CHARSET = utf8mb4;
 
 # Transfer
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `transfers`;
 CREATE TABLE `transfers`
 (
@@ -42,7 +43,7 @@ CREATE TABLE `transfers`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
-
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `samples`;
 CREATE TABLE `samples`
 (
@@ -52,8 +53,9 @@ CREATE TABLE `samples`
 );
 
 # 流水线表
-DROP TABLE IF EXISTS `lines`;
-CREATE TABLE `lines`
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `departments`;
+CREATE TABLE `departments`
 (
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `name`       varchar(20)         NOT NULL DEFAULT '',
@@ -65,6 +67,7 @@ CREATE TABLE `lines`
   DEFAULT CHARSET = utf8mb4;
 
 # 合作伙伴表
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `partners`;
 CREATE TABLE `partners`
 (
@@ -78,3 +81,6 @@ CREATE TABLE `partners`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
+
+
+SET FOREIGN_KEY_CHECKS = 1;
