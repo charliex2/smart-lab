@@ -28,14 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(userPasswordEncoder);
     }
 
-//    @Override
-//    public void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .anonymous().disable()
-//                .authorizeRequests()
-//                .antMatchers("/oauth/token").permitAll();
-//    }
-
     // 支持 password 模式要配置AuthenticationManager
     @Override
     @Bean

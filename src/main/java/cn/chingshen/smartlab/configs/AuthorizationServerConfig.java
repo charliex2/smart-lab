@@ -48,9 +48,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     TokenStore tokenStore;
 
     @Autowired
-    private WebResponseExceptionTranslator webResponseExceptionTranslator;
-
-    @Autowired
     UserDetailsService userDetailsService;
 
     @Autowired
@@ -65,25 +62,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-
-//        CorsConfigurationSource corsConfigurationSource = request -> {
-//            CorsConfiguration corsConfiguration = new CorsConfiguration();
-//            corsConfiguration.addAllowedHeader("*");
-//            corsConfiguration.addAllowedOrigin(request.getHeader(HttpHeaders.ORIGIN));
-//            corsConfiguration.addAllowedMethod("*");
-//            corsConfiguration.setAllowCredentials(true);
-//            corsConfiguration.setMaxAge(3600L);
-//            return corsConfiguration;
-//        };
-
-//        security.tokenKeyAccess("permitAll()")
-//                .checkTokenAccess("permitAll()")
-//                .allowFormAuthenticationForClients();
-//                .addTokenEndpointAuthenticationFilter(new CorsFilter(corsConfigurationSource));
         security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()")
                 .passwordEncoder(oauthClientPasswordEncoder);
-
     }
 
     @Override
@@ -93,21 +74,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-//        // 开启密码授权类型
-//        endpoints.authenticationManager(authenticationManager);
-//
-//        // 配置 token 存储方式
-//        endpoints.tokenStore(tokenStore);
-//
-//        // 自定义登录或者鉴权失败时返回信息
-//        endpoints.exceptionTranslator(webResponseExceptionTranslator);
-//
-//        // 要是用 refresh_token 的话，需要额外配置 userDetailService
-//        endpoints.userDetailsService(userDetailService);
-
-        endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager).userDetailsService(userDetailsService);
-
+        endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService);
     }
-
-
 }

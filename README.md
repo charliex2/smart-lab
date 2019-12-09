@@ -12,3 +12,7 @@ Run => SubSample => Panel => Test
 1. 分几个科室
 2. 每个科室各负责检测什么项目
 如果分 Panel 的，则按 Panel 归类一下
+
+# OAuth
+oauth/token headers
+Auth: Basic + base64(client_id + client_secret)

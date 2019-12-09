@@ -22,12 +22,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 
     /**
-     * 这里设置需要 token 验证的 url
-     * 这些 url 可以在 WebSecurityConfigureAdapter 中排除掉
-     * 对于相同的 url，如果二者都配置了验证，
-     * 则优先进入 ResourceServerConfigurerAdapter, 进行 token 验证，而不会进行
-     * WebSecurityConfigureAdapter 的 basic auth 或表单验证。
-     *
      * @param http
      * @throws Exception
      */
