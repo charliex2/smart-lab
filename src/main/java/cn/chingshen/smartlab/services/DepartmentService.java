@@ -10,31 +10,31 @@ import java.util.List;
 @Service
 public class DepartmentService {
 
-    public DepartmentMapper lineMapper;
+    public DepartmentMapper departmentMapper;
 
-    public DepartmentService(DepartmentMapper lineMapper) {
-        this.lineMapper = lineMapper;
+    public DepartmentService(DepartmentMapper departmentMapper) {
+        this.departmentMapper = departmentMapper;
     }
 
     public List<Department> selectList() {
         QueryWrapper<Department> queryWrapper = new QueryWrapper<Department>();
-        return lineMapper.selectList(queryWrapper);
+        return departmentMapper.selectList(queryWrapper);
     }
 
     public Department selectById(Integer id) {
-        return lineMapper.selectById(id);
+        return departmentMapper.selectById(id);
     }
 
     public Integer updateById(Department line) {
-        return lineMapper.updateById(line);
+        return departmentMapper.updateById(line);
     }
 
     public Integer deleteById(Integer id) {
-        return lineMapper.deleteById(id);
+        return departmentMapper.deleteById(id);
     }
 
     public Integer insert(Department line) {
-        return lineMapper.insert(line);
+        return departmentMapper.insert(line);
     }
 
 }

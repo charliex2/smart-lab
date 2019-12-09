@@ -1,14 +1,19 @@
-DROP TABLE IF EXISTS `user`;
-DROP TABLE IF EXISTS `role`;
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `roles`;
 DROP TABLE IF EXISTS `user_role`;
 DROP TABLE IF EXISTS `role_permission`;
-DROP TABLE IF EXISTS `permission`;
+DROP TABLE IF EXISTS `permissions`;
+SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `users`
 (
-    `id`       bigint(11)   NOT NULL AUTO_INCREMENT,
-    `username` varchar(255) NOT NULL,
-    `password` varchar(255) NOT NULL,
+    `id`         bigint(11)   NOT NULL AUTO_INCREMENT,
+    `username`   varchar(255) NOT NULL,
+    `password`   varchar(255) NOT NULL,
+    `is_expired` int(1)       NOT NULL DEFAULT 0,
+    `is_locked`  int(1)       NOT NULL DEFAULT 0,
+    `is_enable`  int          NOT NULL DEFAULT 1,
     PRIMARY KEY (`id`)
 );
 CREATE TABLE `roles`
@@ -22,7 +27,7 @@ CREATE TABLE `user_role`
     `user_id` bigint(11) NOT NULL,
     `role_id` bigint(11) NOT NULL
 );
-CREATE TABLE `role_permissions`
+CREATE TABLE `role_permission`
 (
     `role_id`       bigint(11) NOT NULL,
     `permission_id` bigint(11) NOT NULL

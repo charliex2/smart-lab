@@ -1,12 +1,18 @@
 package cn.chingshen.smartlab.models;
 
 import cn.chingshen.smartlab.models.acl.Role;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 @Data
+@TableName(value = "users")
 public class User implements UserDetails {
 
     private Integer id;
@@ -15,11 +21,18 @@ public class User implements UserDetails {
     private Boolean isExpired;
     private Boolean isLocked;
     private Boolean isEnable;
-    private List<Role> roles;
+
+    @TableField(exist = false)
+    private List<Role> authorities;
+
 
     @Override
     public List<Role> getAuthorities() {
-        return roles;
+        return authorities;
+    }
+
+    public void setAuthorities(List<Role> authorities) {
+        this.authorities = authorities;
     }
 
     @Override
@@ -34,12 +47,12 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return isExpired;
+        return !isExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isLocked;
+        return !isLocked;
     }
 
     @Override

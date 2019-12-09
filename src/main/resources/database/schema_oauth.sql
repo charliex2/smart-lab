@@ -1,11 +1,13 @@
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `clientdetails`;
 DROP TABLE IF EXISTS `oauth_access_token`;
 DROP TABLE IF EXISTS `oauth_approvals`;
 DROP TABLE IF EXISTS `oauth_client_details`;
 DROP TABLE IF EXISTS `oauth_client_token`;
 DROP TABLE IF EXISTS `oauth_refresh_token`;
+SET FOREIGN_KEY_CHECKS = 1;
 
-CREATE TABLE `clients`
+CREATE TABLE `clientdetails`
 (
     `appId`                  varchar(128) NOT NULL,
     `resourceIds`            varchar(256)  DEFAULT NULL,
@@ -20,7 +22,7 @@ CREATE TABLE `clients`
     `autoApproveScopes`      varchar(256)  DEFAULT NULL,
     PRIMARY KEY (`appId`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 CREATE TABLE `oauth_access_token`
@@ -34,7 +36,7 @@ CREATE TABLE `oauth_access_token`
     `refresh_token`     varchar(256) DEFAULT NULL,
     PRIMARY KEY (`authentication_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE `oauth_approvals`
 (
@@ -45,9 +47,9 @@ CREATE TABLE `oauth_approvals`
     `expiresAt`      datetime     DEFAULT NULL,
     `lastModifiedAt` datetime     DEFAULT NULL
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
-CREATE TABLE `oauth_clients`
+CREATE TABLE `oauth_client_details`
 (
     `client_id`               varchar(128) NOT NULL,
     `resource_ids`            varchar(256)  DEFAULT NULL,
@@ -59,10 +61,10 @@ CREATE TABLE `oauth_clients`
     `access_token_validity`   int(11)       DEFAULT NULL,
     `refresh_token_validity`  int(11)       DEFAULT NULL,
     `additional_information`  varchar(4096) DEFAULT NULL,
-    `auto_approve`             varchar(256)  DEFAULT NULL,
+    `autoapprove`             varchar(256)  DEFAULT NULL,
     PRIMARY KEY (`client_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE `oauth_client_token`
 (
@@ -73,7 +75,7 @@ CREATE TABLE `oauth_client_token`
     `client_id`         varchar(256) DEFAULT NULL,
     PRIMARY KEY (`authentication_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 DROP TABLE IF EXISTS `oauth_code`;
 CREATE TABLE `oauth_code`
@@ -81,7 +83,7 @@ CREATE TABLE `oauth_code`
     `code`           varchar(256) DEFAULT NULL,
     `authentication` blob
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE `oauth_refresh_token`
 (
@@ -89,4 +91,4 @@ CREATE TABLE `oauth_refresh_token`
     `token`          blob,
     `authentication` blob
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;

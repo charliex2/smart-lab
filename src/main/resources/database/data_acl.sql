@@ -1,7 +1,7 @@
 INSERT INTO users (id, username, password)
-VALUES (1, 'user', 'e10adc3949ba59abbe56e057f20f883e');
- INSERT INTO user (id, username, password)
-VALUES (2, 'admin', 'e10adc3949ba59abbe56e057f20f883e');
+VALUES (1, 'user', 'test');
+ INSERT INTO users (id, username, password)
+VALUES (2, 'admin', 'test');
 
 INSERT INTO roles (id, name)
 VALUES (1, 'USER');

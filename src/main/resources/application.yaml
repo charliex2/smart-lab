@@ -13,9 +13,10 @@ spring:
       - classpath:database/data_oauth.sql
       - classpath:database/data_acl.sql
     initialization-mode: always
-    continue-on-error: true
+#    continue-on-error: true
 
 server:
-  port: 8081
+  port: 8088
 mybatis:
   type-handlers-package: cn.chingshen.smartlab.typehandlers
+

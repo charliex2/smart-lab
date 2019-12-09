@@ -1,9 +1,19 @@
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `depositories`;
+DROP TABLE IF EXISTS `transfer_sheets`;
+DROP TABLE IF EXISTS `transfers`;
+DROP TABLE IF EXISTS `samples`;
+DROP TABLE IF EXISTS `departments`;
+DROP TABLE IF EXISTS `partners`;
+SET FOREIGN_KEY_CHECKS = 1;
+
 CREATE TABLE `depositories`
 (
     `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `name`        varchar(20)         NOT NULL DEFAULT '',
+    `is_expired`  int(1)              NOT NULL DEFAULT 0,
+    `is_locked`   int(1)              NOT NULL DEFAULT 0,
+    `is_enable`   int(1)              NOT NULL DEFAULT 1,
     `description` varchar(255)        NOT NULL DEFAULT '',
     `created_at`  timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at`  timestamp           NULL     DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -12,8 +22,7 @@ CREATE TABLE `depositories`
   DEFAULT CHARSET = utf8mb4;
 
 # TransferSheet
-SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `transfer_sheets`;
+
 CREATE TABLE `transfer_sheets`
 (
     `id`             BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -27,8 +36,6 @@ CREATE TABLE `transfer_sheets`
   DEFAULT CHARSET = utf8mb4;
 
 # Transfer
-SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `transfers`;
 CREATE TABLE `transfers`
 (
     `id`                BIGINT(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -43,8 +50,7 @@ CREATE TABLE `transfers`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
-SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `samples`;
+
 CREATE TABLE `samples`
 (
     `id`      BIGINT(20)  NOT NULL,
@@ -53,8 +59,6 @@ CREATE TABLE `samples`
 );
 
 # 流水线表
-SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `departments`;
 CREATE TABLE `departments`
 (
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -67,8 +71,6 @@ CREATE TABLE `departments`
   DEFAULT CHARSET = utf8mb4;
 
 # 合作伙伴表
-SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `partners`;
 CREATE TABLE `partners`
 (
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -83,4 +85,3 @@ CREATE TABLE `partners`
   DEFAULT CHARSET = utf8mb4;
 
 
-SET FOREIGN_KEY_CHECKS = 1;
