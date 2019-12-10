@@ -16,8 +16,11 @@ import java.util.logging.Logger;
 @MapperScan("cn.chingshen.smartlab.mappers")
 public class SmartLabApplication implements ApplicationRunner {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public SmartLabApplication(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SmartLabApplication.class, args);

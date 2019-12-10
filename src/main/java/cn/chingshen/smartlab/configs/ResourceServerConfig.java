@@ -20,7 +20,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         resources.resourceId(RESOURCE_ID);
     }
 
-
     /**
      * @param http
      * @throws Exception

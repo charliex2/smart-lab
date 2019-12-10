@@ -1,6 +1,5 @@
 package cn.chingshen.smartlab.configs;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,12 +14,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+    final
     UserDetailsService userDetailsService;
 
-    @Autowired
-    @Qualifier("UserPasswordEncoder")
+    final
     PasswordEncoder userPasswordEncoder;
+
+    public WebSecurityConfig(UserDetailsService userDetailsService, @Qualifier("UserPasswordEncoder") PasswordEncoder userPasswordEncoder) {
+        this.userDetailsService = userDetailsService;
+        this.userPasswordEncoder = userPasswordEncoder;
+    }
 
     // 配置认证管理器AuthenticationManager。说白了就是所有 UserDetails 相关的它都管，包含 PasswordEncoder 密码机。
     @Override

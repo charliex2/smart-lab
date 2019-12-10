@@ -6,20 +6,19 @@ import cn.chingshen.smartlab.models.User;
 import cn.chingshen.smartlab.models.acl.Role;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserDetailService implements UserDetailsService {
+public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
     private final UserMapper userMapper;
 
     private final RoleMapper roleMapper;
 
-    public UserDetailService(UserMapper userMapper, RoleMapper roleMapper) {
+    public UserDetailsService(UserMapper userMapper, RoleMapper roleMapper) {
         this.userMapper = userMapper;
         this.roleMapper = roleMapper;
     }
