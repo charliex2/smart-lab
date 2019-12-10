@@ -12,6 +12,7 @@ public class Panel {
     private Integer id;
     private String name;
     private String description;
+    private Integer goodId;
     private Date createdAt;
     private Date updatedAt;
 }

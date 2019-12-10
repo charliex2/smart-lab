@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `depositories`;
+# DROP TABLE IF EXISTS `depositories`;
 DROP TABLE IF EXISTS `transfer_sheets`;
 DROP TABLE IF EXISTS `transfers`;
 DROP TABLE IF EXISTS `samples`;
@@ -7,19 +7,19 @@ DROP TABLE IF EXISTS `departments`;
 DROP TABLE IF EXISTS `partners`;
 SET FOREIGN_KEY_CHECKS = 1;
 
-CREATE TABLE `depositories`
-(
-    `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `name`        varchar(20)         NOT NULL DEFAULT '',
-    `is_expired`  int(1)              NOT NULL DEFAULT 0,
-    `is_locked`   int(1)              NOT NULL DEFAULT 0,
-    `is_enable`   int(1)              NOT NULL DEFAULT 1,
-    `description` varchar(255)        NOT NULL DEFAULT '',
-    `created_at`  timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at`  timestamp           NULL     DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
+# CREATE TABLE `depositories`
+# (
+#     `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+#     `name`        varchar(20)         NOT NULL DEFAULT '',
+#     `is_expired`  int(1)              NOT NULL DEFAULT 0,
+#     `is_locked`   int(1)              NOT NULL DEFAULT 0,
+#     `is_enable`   int(1)              NOT NULL DEFAULT 1,
+#     `description` varchar(255)        NOT NULL DEFAULT '',
+#     `created_at`  timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+#     `updated_at`  timestamp           NULL     DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+#     PRIMARY KEY (`id`)
+# ) ENGINE = InnoDB
+#   DEFAULT CHARSET = utf8mb4;
 
 # TransferSheet
 
@@ -55,6 +55,8 @@ CREATE TABLE `samples`
 (
     `id`      BIGINT(20)  NOT NULL,
     `barcode` VARCHAR(20) NOT NULL COMMENT '条形码',
+    `partnerId` int unsigned NOT NULL,
+
     PRIMARY KEY (`id`)
 );
 

@@ -59,6 +59,7 @@ public class JsonTypeHandler<T> extends BaseTypeHandler<T> {
 
     private T toObject(String content, Class<T> tClass) {
 
+
         if (content != null || !content.isEmpty()) {
             try {
                 return objectMapper.readValue(content, tClass);

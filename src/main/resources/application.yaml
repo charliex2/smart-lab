@@ -16,7 +16,7 @@ spring:
 #    continue-on-error: true
 
 server:
-  port: 8088
+  port: 8000
 mybatis:
   type-handlers-package: cn.chingshen.smartlab.typehandlers
 
